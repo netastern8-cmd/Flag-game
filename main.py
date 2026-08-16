@@ -1,6 +1,11 @@
 import pygame
 import screen
 
+state={"is_soldier_on_mine":False,
+       "is_soldier_on_flag":False,
+       "is_enter":False,
+       "is_window_open":True}
+
 
 
 

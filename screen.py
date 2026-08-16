@@ -63,6 +63,11 @@ def place_grass():
             grass_lst.append((row,col))
             drew_grass(row, col)
 
+def drew_mine(row,col):
+    consts.MINE=pygame.transform.scale(consts.MINE, (consts.BLOCK_SIZE*3,consts.BLOCK_SIZE))
+    WINDOW.blit(consts.MINE,(matrix_to_pixels(row,col)))
+    pygame.display.update()
+
 def drew_OG_soldier(row,col):
     consts.OG_SOLDIER=pygame.transform.scale(consts.OG_SOLDIER, \
                 (consts.SOLDIER_WIDTH*0.15,consts.SOLDIER_HEIGHT*0.15))

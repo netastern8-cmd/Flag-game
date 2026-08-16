@@ -74,8 +74,9 @@ def place_mines():
             drew_mine(row, col)
 
 def drew_OG_soldier(row,col):
-    consts.=pygame.transform.scale(consts.MINE, (consts.BLOCK_SIZE*3,consts.BLOCK_SIZE))
-    WINDOW.blit(consts.MINE,(matrix_to_pixels(row,col)))
+    consts.OG_SOLDIER=pygame.transform.scale(consts.OG_SOLDIER, \
+                (consts.BLOCK_SIZE * (consts.SOLDIER_WIDTH+1), consts.BLOCK_SIZE * consts.SOLDIER_HEIGHT))
+    WINDOW.blit(consts.OG_SOLDIER,(matrix_to_pixels(row,col)))
     pygame.display.update()
 
 

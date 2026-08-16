@@ -55,10 +55,6 @@ def drew_grass(row,col):
     WINDOW.blit(consts.GRASS,(matrix_to_pixels(row,col)))
     pygame.display.update()
 
-def drew_mine(row,col):
-    consts.MINE=pygame.transform.scale(consts.MINE, (consts.BLOCK_SIZE*3,consts.BLOCK_SIZE))
-    WINDOW.blit(consts.MINE,(matrix_to_pixels(row,col)))
-    pygame.display.update()
 
 def place_grass():
     while len(grass_lst)<20:

@@ -18,7 +18,7 @@ MINE=pygame.image.load("mine.png")
 SOLDIER_HEIGHT=4
 SOLDIER_WIDTH=2
 
-OG_SOLDIER_
+
 WIN_MESSAGE="you win!"
 LOSE_MESSAGE="you lose!"
 

@@ -75,9 +75,24 @@ def place_mines():
 
 def drew_OG_soldier(row,col):
     consts.OG_SOLDIER=pygame.transform.scale(consts.OG_SOLDIER, \
-                (consts.BLOCK_SIZE * (consts.SOLDIER_WIDTH+1), consts.BLOCK_SIZE * consts.SOLDIER_HEIGHT))
-    WINDOW.blit(consts.OG_SOLDIER,(matrix_to_pixels(row,col)))
+                (consts.SOLDIER_WIDTH*0.15,consts.SOLDIER_HEIGHT*0.15))
+    WINDOW.blit(consts.OG_SOLDIER,(matrix_to_pixels(row,col-1)))
     pygame.display.update()
 
+def drew_frozen_soldier(row,col):
+    consts.FROZEN_SOLDIER=pygame.transform.scale(consts.FROZEN_SOLDIER, \
+                (consts.SOLDIER_WIDTH*0.15,consts.SOLDIER_HEIGHT*0.15))
+    WINDOW.blit(consts.FROZEN_SOLDIER,(matrix_to_pixels(row,col-1)))
+    pygame.display.update()
 
+def drew_injured_soldier(row,col):
+    consts.INJURED_SOLDIER=pygame.transform.scale(consts.INJURED_SOLDIER, \
+                (consts.INJURED_WIDTH*0.18,consts.INJURED_HEIGHT*0.18))
+    WINDOW.blit(consts.INJURED_SOLDIER,(matrix_to_pixels(row,col-1)))
+    pygame.display.update()
+
+def drew_flag():
+    consts.FLAG = pygame.transform.scale(consts.FLAG, (consts.FLAG_WIDTH*0.14,consts.FLAG_HEIGHT*0.11))
+    WINDOW.blit(consts.FLAG, (consts.WIDTH - consts.FLAG_WIDTH*0.14, consts.HEIGHT - consts.FLAG_HEIGHT*0.11))
+    pygame.display.update()
 

@@ -8,8 +8,7 @@ state={"is_soldier_on_mine":False,
        "running":True,
        "arrow_key_on":False,}
 
-screen.creat_moving_screen()
-screen.drew_OG_soldier(1,1)
+
 def main():
     while state["running"]:
         for event in pygame.event.get():
@@ -36,8 +35,8 @@ def soldier_movmement(key):
     if keys_pressed[pygame.K_UP]:
 
     if keys_pressed[pygame.K_DOWN]:
-'''
 
 
-if __name__ == "__main__":
-    main()
+
+
+main()

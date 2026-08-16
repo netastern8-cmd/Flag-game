@@ -35,8 +35,8 @@ def soldier_movmement(key):
     if keys_pressed[pygame.K_UP]:
 
     if keys_pressed[pygame.K_DOWN]:
-'''
 
 
-if __name__ == "__main__":
-    main()
+
+
+main()

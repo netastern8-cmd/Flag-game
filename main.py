@@ -9,7 +9,7 @@ def main():
             if event.type == pygame.QUIT:
                 run=False
 
-        screen.create()
+        screen.frozen_screen() #check
     pygame.quit()
 
 if __name__ == "__main__":

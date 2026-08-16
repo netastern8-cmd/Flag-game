@@ -5,4 +5,6 @@ FROZEN_SOLDIER = pygame.image.load("OGsoldier.png")
 INJURED_SOLDIER = pygame.image.load("OGsoldier.png")
 
 
-BACKGROUND_GREEN=(34, 139, 34)
+
+BACKGROUND_MOVING=(34, 139, 34)
+BACKGROUND_FROZEN=(6, 10, 9)

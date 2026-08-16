@@ -1,6 +1,7 @@
 import pygame
 import consts
 import random
+import game_field
 
 WINDOW = pygame.display.set_mode((consts.WIDTH,consts.HEIGHT))
 pygame.display.set_caption("FLAG GAME!")
@@ -22,7 +23,7 @@ def creat_moving_screen():
 def creat_frozen_screen():
     WINDOW.fill(consts.BACKGROUND_FROZEN)
     frozen_grid()
-    place_mines()
+    game_field.place_mines()
     pygame.display.update()
 
 def moving_screen():
@@ -65,13 +66,6 @@ def place_grass():
         if (row,col) not in grass_lst:
             grass_lst.append((row,col))
             drew_grass(row, col)
-
-def place_mines():
-    while len(mine_lst)<20:
-        row,col=random.randint(0,24),random.randint(0,47)
-        if (row,col) not in mine_lst:
-            mine_lst.append((row,col))
-            drew_mine(row, col)
 
 def drew_OG_soldier(row,col):
     consts.OG_SOLDIER=pygame.transform.scale(consts.OG_SOLDIER, \

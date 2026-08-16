@@ -18,12 +18,17 @@ def main():
 
     pygame.quit()
 
-'''
+def check_flag():
+    pass
+
+def check_mines():
+    pass
+
+
 def soldier_movmement(key):
     keys_pressed = pygame.key.get_pressed()
 
     if keys_pressed[pygame.K_RIGHT]:
-
 
     if keys_pressed[pygame.K_LEFT]:
 

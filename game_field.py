@@ -47,3 +47,4 @@ def check_flag(body):
         if (row, col) in FLAG_INDEXES:
             return True
     return False
+

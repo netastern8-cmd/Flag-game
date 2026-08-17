@@ -27,7 +27,6 @@ MESSAGE_LOCATION= (0.32 * WIDTH, HEIGHT / 2 - (FONT_SIZE / 2))
 LOSE_MESSAGE = "You Lost!"
 WIN_MESSAGE = "You Won!"
 
-FPS=60
 
 
 

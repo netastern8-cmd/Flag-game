@@ -1,4 +1,7 @@
 import pygame
+
+from game_field import FIELD
+
 OG_SOLDIER=pygame.image.load("OGsoldier.png")
 FROZEN_SOLDIER = pygame.image.load("frozen_soldier.png")
 INJURED_SOLDIER = pygame.image.load("injured_soldier.png")
@@ -22,6 +25,13 @@ def soldier_body(row,col):
         for j in range(2):
             body_lst.append((row+i,col+j))
     return body_lst
+
+def find_soldier_position(row,col):
+    for row in range(len(FIELD)):
+        for col in range(len(FIELD[row])):
+            if FIELD[row][col]=="s":
+                return (row,col)
+    return (0,0)
 
 def move_soldier_right(row,col):
    soldier= screen.drew_OG_soldier(row,col+1)

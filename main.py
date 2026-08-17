@@ -15,8 +15,10 @@ state = {
 }
 
 game_field.place_mines()
-game_field.mark_mine_in_field()
+game_field.mark_soldier_position(0,0)
+
 print_matrix(game_field.FIELD)
+
 def main():
     pygame.init()
 
@@ -36,8 +38,7 @@ def main():
 
 
         if not state["enter_key_on"]:
-#            soldier_movement()
-            pass
+            soldier_movement()
     pygame.quit()
 
 
@@ -53,9 +54,6 @@ def check_mines(lst_mines):
         return False
 
 
-
-
-"""
 def soldier_movement():
  for row in game_field.FIELD:
     for col in row:
@@ -74,6 +72,6 @@ def soldier_movement():
      if keys_pressed[pygame.K_DOWN]:
          soldier.move_soldier_down(game_field.FIELD[row], game_field.FIELD[col])
 
-"""
+
 
 main()

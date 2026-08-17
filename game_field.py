@@ -3,6 +3,8 @@ import consts
 import screen
 import random
 
+from soldier import soldier_legs, SOLDIER_STARTING, soldier_body
+
 MINE_LST=[]
 FIELD = [["_" for _ in range(50)] for _ in range(25)]
 
@@ -11,15 +13,22 @@ FIELD = [["_" for _ in range(50)] for _ in range(25)]
 def place_mines():
     while len(MINE_LST)<20:
         row,col=random.randint(0,24),random.randint(0,47)
-        if (row,col) not in MINE_LST:
+        if valid_mine_placement(row,col):
             MINE_LST.append((row, col))
+            mark_mine_in_field(row,col)
             screen.drew_mine(row, col)
 
-def mark_mine_in_field():
-    for row in range(len(FIELD)):
-        for col in range(len(FIELD[0])):
-            if (row, col) in MINE_LST or (row, col - 1) in MINE_LST or (row, col - 2) in MINE_LST:
-                FIELD[row][col] = "x"
+def valid_mine_placement(row,col):
+    valid=False
+    if (row, col) != (soldier_legs(0, 0) or soldier_body(0, 0)):
+        if (row, col) not in MINE_LST:
+            if FIELD[row][col] != "x":
+                valid=True
+    return valid
+
+def mark_mine_in_field(row,col):
+    for i in range(3):
+        FIELD[row][col+i] = "x"
 
 def mark_soldier_position(s_row,s_col):
     for row in range(len(FIELD)):

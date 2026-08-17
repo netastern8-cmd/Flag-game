@@ -2,12 +2,12 @@ import pygame
 
 BACKGROUND_MOVING=(34, 139, 34)
 BACKGROUND_FROZEN=(6, 10, 9)
+LINE_COLOR=(17, 101, 102)
+
 WIDTH=1000
 HEIGHT=WIDTH//2
 BLOCK_SIZE=WIDTH//50
 
-
-LINE_COLOR=(17, 101, 102)
 
 GRASS = pygame.image.load("grass.png")
 FLAG=pygame.image.load("flag.png")

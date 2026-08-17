@@ -3,6 +3,8 @@ import consts
 import screen
 import random
 
+from main import state
+
 FIELD=[]
 mine_lst=[]
 
@@ -31,3 +33,9 @@ def switch_screen():
     screen.moving_screen()
 
 
+def check_mines(lst_mines):
+    for row,col in lst_mines:
+        if FIELD[row][col] == "x":
+            return True
+
+        return False

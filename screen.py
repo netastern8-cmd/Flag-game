@@ -2,6 +2,7 @@ import pygame
 import consts
 import random
 import game_field
+import soldier
 
 WINDOW = pygame.display.set_mode((consts.WIDTH,consts.HEIGHT))
 pygame.display.set_caption("FLAG GAME!")
@@ -69,21 +70,21 @@ def drew_mine(row,col):
     pygame.display.update()
 
 def drew_OG_soldier(row,col):
-    consts.OG_SOLDIER=pygame.transform.scale(consts.OG_SOLDIER, \
-                (consts.SOLDIER_WIDTH*0.15,consts.SOLDIER_HEIGHT*0.15))
-    WINDOW.blit(consts.OG_SOLDIER,(matrix_to_pixels(row,col-1)))
+    soldier.OG_SOLDIER=pygame.transform.scale(soldier.OG_SOLDIER, \
+                (soldier.SOLDIER_WIDTH*0.15,soldier.SOLDIER_HEIGHT*0.15))
+    WINDOW.blit(soldier.OG_SOLDIER,(matrix_to_pixels(row,col-1)))
     pygame.display.update()
 
 def drew_frozen_soldier(row,col):
-    consts.FROZEN_SOLDIER=pygame.transform.scale(consts.FROZEN_SOLDIER, \
-                (consts.SOLDIER_WIDTH*0.15,consts.SOLDIER_HEIGHT*0.15))
-    WINDOW.blit(consts.FROZEN_SOLDIER,(matrix_to_pixels(row,col-1)))
+    soldier.FROZEN_SOLDIER=pygame.transform.scale(soldier.FROZEN_SOLDIER, \
+                (soldier.SOLDIER_WIDTH*0.15,soldier.SOLDIER_HEIGHT*0.15))
+    WINDOW.blit(soldier.FROZEN_SOLDIER,(matrix_to_pixels(row,col-1)))
     pygame.display.update()
 
 def drew_injured_soldier(row,col):
-    consts.INJURED_SOLDIER=pygame.transform.scale(consts.INJURED_SOLDIER, \
-                (consts.INJURED_WIDTH*0.18,consts.INJURED_HEIGHT*0.18))
-    WINDOW.blit(consts.INJURED_SOLDIER,(matrix_to_pixels(row,col-1)))
+    soldier.INJURED_SOLDIER=pygame.transform.scale(soldier.INJURED_SOLDIER, \
+                (soldier.INJURED_WIDTH*0.18,soldier.INJURED_HEIGHT*0.18))
+    WINDOW.blit(soldier.INJURED_SOLDIER,(matrix_to_pixels(row,col-1)))
     pygame.display.update()
 
 def drew_flag():

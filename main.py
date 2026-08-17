@@ -1,6 +1,5 @@
 import pygame
 import game_field
-import screen
 import soldier
 
 
@@ -26,20 +25,14 @@ def main():
                 if event.key == pygame.K_RETURN:
                     state["enter_key_on"] = True
 
-                    game_field.switch_screen()
-
-                    state["enter_key_on"] = False
-
         if not state["enter_key_on"]:
             soldier_movement()
 
         if win(soldier.find_soldier_position()):
             state["is_soldier_on_flag"] = True
-            screen.win_message()
 
         elif lose(soldier.find_soldier_position()):
             state["is_soldier_on_mine"] = True
-            screen.lose_message()
 
     pygame.quit()
 

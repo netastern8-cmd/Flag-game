@@ -1,12 +1,11 @@
 import pygame
-import consts
 import screen
 import random
-
 import soldier
-MINE_LST=[]
-FIELD = [["_" for _ in range(50)] for _ in range(25)]
 
+MINE_LST=[]
+FLAG_INDEXES = []
+FIELD = [["_" for _ in range(50)] for _ in range(25)]
 
 
 def place_mines():
@@ -36,6 +35,11 @@ def mark_soldier_position(s_row,s_col):
                 FIELD[row][col]="_"
     FIELD[s_row][s_col]="s"
 
+def mark_flag():
+    for row in range(22, 25):
+        for col in range(46, 50):
+            FLAG_INDEXES.append((row, col))
+
 def switch_screen():
     screen.frozen_screen()
     pygame.time.delay(1000)
@@ -44,19 +48,15 @@ def switch_screen():
 
 def check_mines(legs):
     for item in legs:
-        row,col=item[0],item[1]
+        (row,col) =item[0],item[1]
         if FIELD[row][col] == "x":
             return True
-        return False
+    return False
 
 
 def check_flag(body):
-    flag_indices = []
-    for row in range(22, 25):
-        for col in range(46, 50):
-            flag_indices.append((row, col))
     for item in body:
         (row,col) =item[0],item[1]
-        if (row, col) in flag_indices:
+        if (row, col) in FLAG_INDEXES:
             return True
     return False

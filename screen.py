@@ -3,6 +3,8 @@ import consts
 import random
 import game_field
 import soldier
+from main import state
+
 pygame.font.init()
 
 WINDOW = pygame.display.set_mode((consts.WIDTH,consts.HEIGHT))
@@ -20,18 +22,17 @@ def matrix_to_pixels(row,col):
 def creat_moving_screen():
     WINDOW.fill(consts.BACKGROUND_MOVING)
     place_grass()
+    draw_flag()
+    draw_OG_soldier(0,0)
     pygame.display.update()
 
-def creat_frozen_screen():
-    WINDOW.fill(consts.BACKGROUND_FROZEN)
-    frozen_grid()
-    game_field.place_mines()
-    pygame.display.update()
 
 def moving_screen():
     WINDOW.fill(consts.BACKGROUND_MOVING)
     for block in grass_lst:
         draw_grass(block[0],block[1])
+    draw_flag()
+    draw_OG_soldier(soldier.find_soldier_position())
     pygame.display.update()
 
 def frozen_screen():
@@ -39,6 +40,7 @@ def frozen_screen():
     frozen_grid()
     for block in game_field.MINE_LST:
         draw_mine(block[0],block[1])
+    draw_frozen_soldier(soldier.find_soldier_position())
     pygame.display.update()
 
 def frozen_grid():
@@ -91,7 +93,6 @@ def draw_injured_soldier(row,col):
 def draw_flag():
     consts.FLAG = pygame.transform.scale(consts.FLAG, (consts.FLAG_WIDTH*0.14,consts.FLAG_HEIGHT*0.11))
     WINDOW.blit(consts.FLAG, (consts.WIDTH - consts.FLAG_WIDTH*0.14, consts.HEIGHT - consts.FLAG_HEIGHT*0.11))
-    pygame.display.update()
 
 def win_message():
     draw_message(consts.WIN_MESSAGE, consts.FONT,
@@ -106,7 +107,19 @@ def draw_message(message, font, color, location):
     WINDOW.blit(text_img, location)
     pygame.display.update()
 
-#def draw_game():
+def draw_game():
+    game_field.place_mines()
+    creat_moving_screen()
+    if state["enter_key_on"]:
+        game_field.switch_screen()
+        state["enter_key_on"] = False
+    if state["is_soldier_on_flag"]:
+        win_message()
+    if state["is_soldier_on mine"]:
+        draw_injured_soldier(soldier.find_soldier_position())
+        pygame.time.delay(100)
+        lose_message()
+
 
 
 

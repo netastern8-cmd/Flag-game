@@ -31,14 +31,14 @@ def creat_frozen_screen():
 def moving_screen():
     WINDOW.fill(consts.BACKGROUND_MOVING)
     for block in grass_lst:
-        drew_grass(block[0],block[1])
+        draw_grass(block[0],block[1])
     pygame.display.update()
 
 def frozen_screen():
     WINDOW.fill(consts.BACKGROUND_FROZEN)
     frozen_grid()
     for block in game_field.MINE_LST:
-        drew_mine(block[0],block[1])
+        draw_mine(block[0],block[1])
     pygame.display.update()
 
 def frozen_grid():
@@ -52,7 +52,7 @@ def frozen_grid():
         y_pixels+=consts.BLOCK_SIZE
 
 
-def drew_grass(row,col):
+def draw_grass(row,col):
     consts.GRASS=pygame.transform.scale(consts.GRASS, (consts.BLOCK_SIZE*3,consts.BLOCK_SIZE*3))
     WINDOW.blit(consts.GRASS,(matrix_to_pixels(row,col)))
     pygame.display.update()
@@ -63,32 +63,32 @@ def place_grass():
         row,col=random.randint(0,22),random.randint(0,47)
         if (row,col) not in grass_lst:
             grass_lst.append((row,col))
-            drew_grass(row, col)
+            draw_grass(row, col)
 
-def drew_mine(row,col):
+def draw_mine(row,col):
     consts.MINE=pygame.transform.scale(consts.MINE, (consts.BLOCK_SIZE*3,consts.BLOCK_SIZE))
     WINDOW.blit(consts.MINE,(matrix_to_pixels(row,col)))
     pygame.display.update()
 
-def drew_OG_soldier(row,col):
+def draw_OG_soldier(row,col):
     soldier.OG_SOLDIER=pygame.transform.scale(soldier.OG_SOLDIER, \
                 (soldier.SOLDIER_WIDTH*0.15,soldier.SOLDIER_HEIGHT*0.15))
     WINDOW.blit(soldier.OG_SOLDIER,(matrix_to_pixels(row,col-1)))
     pygame.display.update()
 
-def drew_frozen_soldier(row,col):
+def draw_frozen_soldier(row,col):
     soldier.FROZEN_SOLDIER=pygame.transform.scale(soldier.FROZEN_SOLDIER, \
                 (soldier.SOLDIER_WIDTH*0.15,soldier.SOLDIER_HEIGHT*0.15))
     WINDOW.blit(soldier.FROZEN_SOLDIER,(matrix_to_pixels(row,col-1)))
     pygame.display.update()
 
-def drew_injured_soldier(row,col):
+def draw_injured_soldier(row,col):
     soldier.INJURED_SOLDIER=pygame.transform.scale(soldier.INJURED_SOLDIER, \
                 (soldier.INJURED_WIDTH*0.18,soldier.INJURED_HEIGHT*0.18))
     WINDOW.blit(soldier.INJURED_SOLDIER,(matrix_to_pixels(row,col-1)))
     pygame.display.update()
 
-def drew_flag():
+def draw_flag():
     consts.FLAG = pygame.transform.scale(consts.FLAG, (consts.FLAG_WIDTH*0.14,consts.FLAG_HEIGHT*0.11))
     WINDOW.blit(consts.FLAG, (consts.WIDTH - consts.FLAG_WIDTH*0.14, consts.HEIGHT - consts.FLAG_HEIGHT*0.11))
     pygame.display.update()
@@ -105,5 +105,8 @@ def draw_message(message, font, color, location):
     text_img = font.render(message, True, color)
     WINDOW.blit(text_img, location)
     pygame.display.update()
+
+#def draw_game():
+
 
 

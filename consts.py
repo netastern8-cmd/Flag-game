@@ -1,4 +1,5 @@
 import pygame
+
 pygame.init()
 
 BACKGROUND_MOVING=(34, 139, 34)

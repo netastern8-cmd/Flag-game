@@ -1,20 +1,12 @@
-import pygame
-import screen
-import random
 import soldier
+
+
+
 
 MINE_LST=[]
 FLAG_INDEXES = []
 FIELD = [["_" for _ in range(50)] for _ in range(25)]
 
-
-def place_mines():
-    while len(MINE_LST)<20:
-        row,col=random.randint(0,24),random.randint(0,47)
-        if valid_mine_placement(row,col):
-            MINE_LST.append((row, col))
-            mark_mine_in_field(row,col)
-            screen.draw_mine(row, col)
 
 def valid_mine_placement(row,col):
     valid=False
@@ -39,11 +31,6 @@ def mark_flag():
     for row in range(22, 25):
         for col in range(46, 50):
             FLAG_INDEXES.append((row, col))
-
-def switch_screen():
-    screen.frozen_screen()
-    pygame.time.delay(1000)
-    screen.moving_screen()
 
 
 def check_mines(legs):

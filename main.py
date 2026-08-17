@@ -1,7 +1,8 @@
 import pygame
 import screen
-import soldier
 
+from game_field import switch_screen
+from soldier import soldier_body
 
 state = {
     "is_soldier_on_mine": False,
@@ -10,8 +11,7 @@ state = {
     "running": True,
     "arrow_key_on": False,
 }
-
-
+soldier_body(0,0)
 def main():
     pygame.init()
 
@@ -50,15 +50,15 @@ def soldier_movement():
 
     if keys_pressed[pygame.K_RIGHT]:
         soldier.move_right()
-
+        pass
     if keys_pressed[pygame.K_LEFT]:
-
+        pass
 
     if keys_pressed[pygame.K_UP]:
-
+        pass
 
     if keys_pressed[pygame.K_DOWN]:
-
+        pass
 
 
 main()

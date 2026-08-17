@@ -23,7 +23,7 @@ def creat_moving_screen():
     WINDOW.fill(consts.BACKGROUND_MOVING)
     place_grass()
     draw_flag()
-    draw_OG_soldier(0,0)
+    draw_OG_soldier((0,0))
     pygame.display.update()
 
 
@@ -85,22 +85,22 @@ def draw_mine(row,col):
     WINDOW.blit(consts.MINE,(matrix_to_pixels(row,col)))
     pygame.display.update()
 
-def draw_OG_soldier(row,col):
+def draw_OG_soldier(position):
     soldier.OG_SOLDIER=pygame.transform.scale(soldier.OG_SOLDIER, \
                 (soldier.SOLDIER_WIDTH*0.15,soldier.SOLDIER_HEIGHT*0.15))
-    WINDOW.blit(soldier.OG_SOLDIER,(matrix_to_pixels(row,col-1)))
+    WINDOW.blit(soldier.OG_SOLDIER,(matrix_to_pixels(position[0],position[1]-1)))
     pygame.display.update()
 
-def draw_frozen_soldier(row,col):
+def draw_frozen_soldier(position):
     soldier.FROZEN_SOLDIER=pygame.transform.scale(soldier.FROZEN_SOLDIER, \
                 (soldier.SOLDIER_WIDTH*0.15,soldier.SOLDIER_HEIGHT*0.15))
-    WINDOW.blit(soldier.FROZEN_SOLDIER,(matrix_to_pixels(row,col-1)))
+    WINDOW.blit(soldier.FROZEN_SOLDIER,(matrix_to_pixels(position[0],position[1]-1)))
     pygame.display.update()
 
-def draw_injured_soldier(row,col):
+def draw_injured_soldier(position):
     soldier.INJURED_SOLDIER=pygame.transform.scale(soldier.INJURED_SOLDIER, \
                 (soldier.INJURED_WIDTH*0.18,soldier.INJURED_HEIGHT*0.18))
-    WINDOW.blit(soldier.INJURED_SOLDIER,(matrix_to_pixels(row,col-1)))
+    WINDOW.blit(soldier.INJURED_SOLDIER,(matrix_to_pixels(position[0],position[1]-1)))
     pygame.display.update()
 
 def draw_flag():

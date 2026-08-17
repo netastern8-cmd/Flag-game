@@ -51,23 +51,21 @@ def lose(position):
 
 
 def soldier_movement():
- for row in range(len(game_field.FIELD)):
-     for col in range(len(game_field.FIELD[row])):
+    positon=soldier.find_soldier_position(game_field.FIELD)
+    keys_pressed = pygame.key.get_pressed()
+    if keys_pressed[pygame.K_RIGHT]:
+     movement.move_soldier_right(positon[0],positon[1])
 
-        keys_pressed = pygame.key.get_pressed()
-        if keys_pressed[pygame.K_RIGHT]:
-         movement.move_soldier_right(row,col)
-
-        if keys_pressed[pygame.K_LEFT]:
-         movement.move_soldier_left(row,col)
+    if keys_pressed[pygame.K_LEFT]:
+     movement.move_soldier_left(positon[0],positon[1])
 
 
-        if keys_pressed[pygame.K_UP]:
-         movement.move_soldier_up(row,col)
+    if keys_pressed[pygame.K_UP]:
+     movement.move_soldier_up(positon[0],positon[1])
 
 
-        if keys_pressed[pygame.K_DOWN]:
-         movement.move_soldier_down(row,col)
+    if keys_pressed[pygame.K_DOWN]:
+     movement.move_soldier_down(positon[0],positon[1])
 
 
 main()

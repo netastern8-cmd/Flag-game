@@ -14,8 +14,11 @@ state = {
 
 def main():
     pygame.init()
+    screen.place_mines()
+    screen.creat_moving_screen()
     screen.draw_game(state)
     while state["running"]:
+        screen.moving_screen()
         for event in pygame.event.get():
 
             if event.type == pygame.QUIT:
@@ -24,9 +27,11 @@ def main():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:
                     state["enter_key_on"] = True
+                    screen.switch_screen(state)
 
         if not state["enter_key_on"]:
             soldier_movement()
+            pygame.time.wait(200)
 
         if win(soldier.find_soldier_position(game_field.FIELD)):
             state["is_soldier_on_flag"] = True
@@ -49,23 +54,28 @@ def lose(position):
         return True
     return False
 
+def position_valid(position):
+    if position[0]>21 or position[0]<0:
+        return False
+    elif position[1]>48 or position[1]<0:
+        return False
+    else:
+        return True
 
 def soldier_movement():
     positon=soldier.find_soldier_position(game_field.FIELD)
     keys_pressed = pygame.key.get_pressed()
-    if keys_pressed[pygame.K_RIGHT]:
-     movement.move_soldier_right(positon[0],positon[1])
+    if position_valid(positon):
+        if keys_pressed[pygame.K_RIGHT]:
+         movement.move_soldier_right(positon[0],positon[1])
 
-    if keys_pressed[pygame.K_LEFT]:
-     movement.move_soldier_left(positon[0],positon[1])
+        elif keys_pressed[pygame.K_LEFT]:
+         movement.move_soldier_left(positon[0],positon[1])
 
+        elif keys_pressed[pygame.K_UP]:
+         movement.move_soldier_up(positon[0],positon[1])
 
-    if keys_pressed[pygame.K_UP]:
-     movement.move_soldier_up(positon[0],positon[1])
-
-
-    if keys_pressed[pygame.K_DOWN]:
-     movement.move_soldier_down(positon[0],positon[1])
-
+        elif keys_pressed[pygame.K_DOWN]:
+         movement.move_soldier_down(positon[0],positon[1])
 
 main()

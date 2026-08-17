@@ -5,7 +5,6 @@ import game_field
 import soldier
 
 
-
 pygame.font.init()
 
 WINDOW = pygame.display.set_mode((consts.WIDTH,consts.HEIGHT))
@@ -43,10 +42,11 @@ def frozen_screen():
     draw_frozen_soldier(soldier.find_soldier_position(game_field.FIELD))
     pygame.display.update()
 
-def switch_screen():
+def switch_screen(state):
     frozen_screen()
     pygame.time.delay(1000)
     moving_screen()
+    state["enter_key_on"] = False
 
 def frozen_grid():
     x_pixels=consts.BLOCK_SIZE
@@ -121,11 +121,8 @@ def draw_message(message, font, color, location):
     pygame.display.update()
 
 def draw_game(state):
-    place_mines()
-    creat_moving_screen()
     if state["enter_key_on"]:
         switch_screen()
-        state["enter_key_on"] = False
     if state["is_soldier_on_flag"]:
         win_message()
     if state["is_soldier_on_mine"]:

@@ -3,7 +3,6 @@ import consts
 import screen
 import random
 
-from soldier import soldier_legs, SOLDIER_STARTING, soldier_body
 
 MINE_LST=[]
 FIELD = [["_" for _ in range(50)] for _ in range(25)]

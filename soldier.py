@@ -1,6 +1,5 @@
 import pygame
 
-from game_field import FIELD, mark_soldier_position
 
 OG_SOLDIER=pygame.image.load("OGsoldier.png")
 FROZEN_SOLDIER = pygame.image.load("frozen_soldier.png")

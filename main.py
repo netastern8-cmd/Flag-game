@@ -3,6 +3,7 @@ import game_field
 import soldier
 
 from game_field import switch_screen
+from screen import creat_moving_screen, win_message, lose_message
 from soldier import soldier_body
 from tests import print_matrix
 
@@ -14,10 +15,8 @@ state = {
     "arrow_key_on": False,
 }
 
-game_field.place_mines()
-game_field.mark_soldier_position(0,0)
-
-print_matrix(game_field.FIELD)
+creat_moving_screen()
+lose_message()
 
 def main():
     pygame.init()
@@ -46,7 +45,7 @@ def check_flag():
     pass
 
 def lose():
-    if
+    pass
 
 
 def soldier_movement():

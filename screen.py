@@ -3,6 +3,7 @@ import consts
 import random
 import game_field
 import soldier
+pygame.font.init()
 
 WINDOW = pygame.display.set_mode((consts.WIDTH,consts.HEIGHT))
 pygame.display.set_caption("FLAG GAME!")
@@ -93,16 +94,16 @@ def drew_flag():
     pygame.display.update()
 
 def win_message():
-    draw_message(consts.WIN_MESSAGE, consts.FONT_SIZE,
+    draw_message(consts.WIN_MESSAGE, consts.FONT,
                  consts.FONT_COLOR, consts.MESSAGE_LOCATION)
 
 def lose_message():
-    draw_message(consts.LOSE_MESSAGE, consts.FONT_SIZE,
+    draw_message(consts.LOSE_MESSAGE, consts.FONT,
                  consts.FONT_COLOR, consts.MESSAGE_LOCATION)
 
-def draw_message(message, font_size, color, location):
-    font = pygame.font.SysFont(consts.FONT_NAME, font_size)
+def draw_message(message, font, color, location):
     text_img = font.render(message, True, color)
     WINDOW.blit(text_img, location)
+    pygame.display.update()
 
 

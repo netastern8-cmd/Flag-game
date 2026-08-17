@@ -4,6 +4,7 @@ import soldier
 
 from game_field import switch_screen
 from soldier import soldier_body
+from tests import print_matrix
 
 state = {
     "is_soldier_on_mine": False,
@@ -12,7 +13,10 @@ state = {
     "running": True,
     "arrow_key_on": False,
 }
-soldier_body(0,0)
+
+game_field.place_mines()
+game_field.mark_mine_in_field()
+print_matrix(game_field.FIELD)
 def main():
     pygame.init()
 
@@ -33,8 +37,8 @@ def main():
 
 
         if not state["enter_key_on"]:
-            soldier_movement()
-
+#            soldier_movement()
+            pass
     pygame.quit()
 
 
@@ -45,7 +49,7 @@ def check_flag():
 def check_mines():
     pass
 
-
+"""
 def soldier_movement():
     keys_pressed = pygame.key.get_pressed()
 
@@ -60,6 +64,6 @@ def soldier_movement():
 
     if keys_pressed[pygame.K_DOWN]:
 
-
+"""
 
 main()

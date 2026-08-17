@@ -36,7 +36,7 @@ def moving_screen():
 def frozen_screen():
     WINDOW.fill(consts.BACKGROUND_FROZEN)
     frozen_grid()
-    for block in game_field.mine_lst:
+    for block in game_field.MINE_LST:
         drew_mine(block[0],block[1])
     pygame.display.update()
 

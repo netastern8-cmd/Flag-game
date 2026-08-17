@@ -1,6 +1,6 @@
 import pygame
 
-from game_field import FIELD
+from game_field import FIELD, mark_soldier_position
 
 OG_SOLDIER=pygame.image.load("OGsoldier.png")
 FROZEN_SOLDIER = pygame.image.load("frozen_soldier.png")
@@ -34,17 +34,17 @@ def find_soldier_position(row,col):
     return (0,0)
 
 def move_soldier_right(row,col):
-   soldier= screen.drew_OG_soldier(row,col+1)
-   return soldier
+   screen.drew_OG_soldier(row,col+1)
+   mark_soldier_position(row,col+1)
 
 def move_soldier_left(row,col):
-    soldier= screen.drew_OG_soldier(row,col-1)
-    return soldier
+    screen.drew_OG_soldier(row,col-1)
+    mark_soldier_position(row,col-1)
 
 def move_soldier_up(row,col):
-    soldier= screen.drew_OG_soldier(row+1,col)
-    return soldier
+    screen.drew_OG_soldier(row+1,col)
+    mark_soldier_position(row+1,col)
 
 def move_soldier_down(row,col):
-    soldier= screen.drew_OG_soldier(row-1,col)
-    return soldier
+    screen.drew_OG_soldier(row-1,col)
+    mark_soldier_position(row-1,col)

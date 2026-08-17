@@ -92,3 +92,17 @@ def drew_flag():
     WINDOW.blit(consts.FLAG, (consts.WIDTH - consts.FLAG_WIDTH*0.14, consts.HEIGHT - consts.FLAG_HEIGHT*0.11))
     pygame.display.update()
 
+def win_message():
+    draw_message(consts.WIN_MESSAGE, consts.FONT_SIZE,
+                 consts.FONT_COLOR, consts.MESSAGE_LOCATION)
+
+def lose_message():
+    draw_message(consts.LOSE_MESSAGE, consts.FONT_SIZE,
+                 consts.FONT_COLOR, consts.MESSAGE_LOCATION)
+
+def draw_message(message, font_size, color, location):
+    font = pygame.font.SysFont(consts.FONT_NAME, font_size)
+    text_img = font.render(message, True, color)
+    WINDOW.blit(text_img, location)
+
+

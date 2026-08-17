@@ -11,6 +11,8 @@ SOLDIER_HEIGHT=OG_SOLDIER.get_rect().height
 SOLDIER_WIDTH=OG_SOLDIER.get_rect().width
 INJURED_HEIGHT=INJURED_SOLDIER.get_rect().height
 INJURED_WIDTH=INJURED_SOLDIER.get_rect().width
+import consts
+import screen
 
 SOLDIER_BLOCK_HEIGHT=4
 SOLDIER_BLOCK_WIDTH=2

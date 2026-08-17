@@ -3,13 +3,12 @@ import consts
 import random
 import game_field
 import soldier
-from main import state
+
 
 pygame.font.init()
 
 WINDOW = pygame.display.set_mode((consts.WIDTH,consts.HEIGHT))
 pygame.display.set_caption("FLAG GAME!")
-
 
 grass_lst=[]
 
@@ -32,7 +31,7 @@ def moving_screen():
     for block in grass_lst:
         draw_grass(block[0],block[1])
     draw_flag()
-    draw_OG_soldier(soldier.find_soldier_position())
+    draw_OG_soldier(soldier.find_soldier_position(game_field.FIELD))
     pygame.display.update()
 
 def frozen_screen():
@@ -40,8 +39,13 @@ def frozen_screen():
     frozen_grid()
     for block in game_field.MINE_LST:
         draw_mine(block[0],block[1])
-    draw_frozen_soldier(soldier.find_soldier_position())
+    draw_frozen_soldier(soldier.find_soldier_position(game_field.FIELD))
     pygame.display.update()
+
+def switch_screen():
+    frozen_screen()
+    pygame.time.delay(1000)
+    moving_screen()
 
 def frozen_grid():
     x_pixels=consts.BLOCK_SIZE
@@ -66,6 +70,14 @@ def place_grass():
         if (row,col) not in grass_lst:
             grass_lst.append((row,col))
             draw_grass(row, col)
+
+def place_mines():
+    while len(game_field.MINE_LST)<20:
+        row,col=random.randint(0,24),random.randint(0,47)
+        if game_field.valid_mine_placement(row,col):
+            game_field.MINE_LST.append((row, col))
+            game_field.mark_mine_in_field(row,col)
+            draw_mine(row, col)
 
 def draw_mine(row,col):
     consts.MINE=pygame.transform.scale(consts.MINE, (consts.BLOCK_SIZE*3,consts.BLOCK_SIZE))
@@ -107,16 +119,16 @@ def draw_message(message, font, color, location):
     WINDOW.blit(text_img, location)
     pygame.display.update()
 
-def draw_game():
-    game_field.place_mines()
+def draw_game(state):
+    place_mines()
     creat_moving_screen()
     if state["enter_key_on"]:
-        game_field.switch_screen()
+        switch_screen()
         state["enter_key_on"] = False
     if state["is_soldier_on_flag"]:
         win_message()
-    if state["is_soldier_on mine"]:
-        draw_injured_soldier(soldier.find_soldier_position())
+    if state["is_soldier_on_mine"]:
+        draw_injured_soldier(soldier.find_soldier_position(game_field.FIELD))
         pygame.time.delay(100)
         lose_message()
 

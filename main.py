@@ -45,13 +45,8 @@ def main():
 def check_flag():
     pass
 
-
-def check_mines(lst_mines):
-    for row,col in lst_mines:
-        if game_field.FIELD[row][col] == "x":
-            return True
-
-        return False
+def lose():
+    if
 
 
 def soldier_movement():

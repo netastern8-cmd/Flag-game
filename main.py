@@ -2,6 +2,8 @@ import pygame
 import game_field
 import soldier
 
+from game_field import switch_screen
+from soldier import soldier_body
 
 state = {
     "is_soldier_on_mine": False,
@@ -10,8 +12,7 @@ state = {
     "running": True,
     "arrow_key_on": False,
 }
-
-
+soldier_body(0,0)
 def main():
     pygame.init()
 
@@ -47,24 +48,17 @@ def check_mines():
 
 def soldier_movement():
     keys_pressed = pygame.key.get_pressed()
-    game_field.create()
 
-for row in game_field.FIELD:
-    for col in row:
-        keys_pressed = pygame.key.get_pressed()
-        if keys_pressed[pygame.K_RIGHT]:
-           soldier.move_soldier_right(game_field.FIELD[row],game_field.FIELD[col])
+    if keys_pressed[pygame.K_RIGHT]:
+        soldier.move_right()
 
-        if keys_pressed[pygame.K_LEFT]:
-            soldier.move_soldier_left(game_field.FIELD[row],game_field.FIELD[col])
+    if keys_pressed[pygame.K_LEFT]:
 
 
-        if keys_pressed[pygame.K_UP]:
-            soldier.move_soldier_up(game_field.FIELD[row],game_field.FIELD[col])
+    if keys_pressed[pygame.K_UP]:
 
 
-        if keys_pressed[pygame.K_DOWN]:
-            soldier.move_soldier_down(game_field.FIELD[row],game_field.FIELD[col])
+    if keys_pressed[pygame.K_DOWN]:
 
 
 

@@ -3,6 +3,7 @@ import consts
 import screen
 import random
 
+import soldier
 from soldier import soldier_legs, SOLDIER_STARTING, soldier_body
 
 MINE_LST=[]
@@ -44,8 +45,22 @@ def switch_screen():
 
 
 def check_mines(lst_mines):
-    for row,col in lst_mines:
+    for item in lst_mines:
+        row,col=item[0],item[1]
         if FIELD[row][col] == "x":
             return True
 
         return False
+
+
+def check_flag(soldier_body):
+    flag_indices = []
+    for row in range(22, 25):
+        for col in range(46, 50):
+            flag_indices.append((row, col))
+
+    for item in soldier_body:
+        (row,col) =item[0],item[1]
+        if (row, col) in flag_indices:
+            return True
+    return False

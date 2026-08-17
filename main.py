@@ -1,5 +1,6 @@
 import pygame
 import game_field
+import screen
 import soldier
 
 from game_field import switch_screen
@@ -36,17 +37,31 @@ def main():
 
                     state["enter_key_on"] = False
 
-
         if not state["enter_key_on"]:
             soldier_movement()
+
+        if win():
+            state["is_soldier_on_flag"] = True
+            screen.win_message()
+
+        elif lose():
+            state["is_soldier_on_mine"] = True
+            screen.lose_message()
+
     pygame.quit()
 
 
-def check_flag():
-    pass
+def win():
+    if game_field.check_flag(soldier.soldier_body):
+        return True
+    return False
+
+
 
 def lose():
-    if
+    if game_field.check_mines(soldier.soldier_legs):
+        return True
+    return False
 
 
 def soldier_movement():

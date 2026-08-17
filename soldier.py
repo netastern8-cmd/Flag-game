@@ -22,6 +22,7 @@ def soldier_body(row,col):
         for j in range(2):
             body_lst.append((row+i,col+j))
     return body_lst
+
 def move_soldier_right(row,col):
    soldier= screen.drew_OG_soldier(row,col+1)
    return soldier

@@ -7,9 +7,6 @@ FIELD=[]
 mine_lst=[]
 
 def create():
- field = [[0 for _ in range(25)] for _ in range(50)]
- print(len(field), len(field[0]))
-
  FIELD = [[0 for _ in range(25)] for _ in range(50)]
 
 

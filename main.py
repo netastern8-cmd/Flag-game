@@ -26,8 +26,7 @@ def main():
                 if event.key == pygame.K_RETURN:
                     state["enter_key_on"] = True
 
-
-
+                    game_field.switch_screen()
 
                     state["enter_key_on"] = False
 
@@ -42,23 +41,34 @@ def check_flag():
     pass
 
 
-def check_mines():
-    pass
+def check_mines(lst_mines):
+    for row,col in lst_mines:
+        if game_field.FIELD[row][col] == "x":
+            return True
+
+        return False
+
+
+
 
 
 def soldier_movement():
-    keys_pressed = pygame.key.get_pressed()
+ for row in game_field.FIELD:
+    for col in row:
+     keys_pressed = pygame.key.get_pressed()
+     if keys_pressed[pygame.K_RIGHT]:
+        soldier.move_soldier_right(game_field.FIELD[row], game_field.FIELD[col])
 
-    if keys_pressed[pygame.K_RIGHT]:
-        soldier.move_right()
-
-    if keys_pressed[pygame.K_LEFT]:
+     if keys_pressed[pygame.K_LEFT]:
+         soldier.move_soldier_left(game_field.FIELD[row], game_field.FIELD[col])
 
 
-    if keys_pressed[pygame.K_UP]:
+     if keys_pressed[pygame.K_UP]:
+         soldier.move_soldier_up(game_field.FIELD[row], game_field.FIELD[col])
 
 
-    if keys_pressed[pygame.K_DOWN]:
+     if keys_pressed[pygame.K_DOWN]:
+         soldier.move_soldier_down(game_field.FIELD[row], game_field.FIELD[col])
 
 
 

@@ -5,6 +5,7 @@ import game_field
 import soldier
 from main import state
 
+
 pygame.font.init()
 
 WINDOW = pygame.display.set_mode((consts.WIDTH,consts.HEIGHT))

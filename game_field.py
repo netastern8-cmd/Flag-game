@@ -15,7 +15,7 @@ def place_mines():
         if valid_mine_placement(row,col):
             MINE_LST.append((row, col))
             mark_mine_in_field(row,col)
-            screen.drew_mine(row, col)
+            screen.draw_mine(row, col)
 
 def valid_mine_placement(row,col):
     valid=False
@@ -42,22 +42,20 @@ def switch_screen():
     screen.moving_screen()
 
 
-def check_mines(lst_mines):
-    for item in lst_mines:
+def check_mines(legs):
+    for item in legs:
         row,col=item[0],item[1]
         if FIELD[row][col] == "x":
             return True
-
         return False
 
 
-def check_flag(soldier_body):
+def check_flag(body):
     flag_indices = []
     for row in range(22, 25):
         for col in range(46, 50):
             flag_indices.append((row, col))
-
-    for item in soldier_body:
+    for item in body:
         (row,col) =item[0],item[1]
         if (row, col) in flag_indices:
             return True

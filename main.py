@@ -13,7 +13,6 @@ state = {
     "arrow_key_on": False,
 }
 
-
 def main():
     pygame.init()
 
@@ -34,26 +33,26 @@ def main():
         if not state["enter_key_on"]:
             soldier_movement()
 
-        if win():
+        if win(soldier.find_soldier_position()):
             state["is_soldier_on_flag"] = True
             screen.win_message()
 
-        elif lose():
+        elif lose(soldier.find_soldier_position()):
             state["is_soldier_on_mine"] = True
             screen.lose_message()
 
     pygame.quit()
 
 
-def win():
-    if game_field.check_flag(soldier.soldier_body):
+def win(position):
+    body=soldier.soldier_body(position[0],position[1])
+    if game_field.check_flag(body):
         return True
     return False
 
-
-
-def lose():
-    if game_field.check_mines(soldier.soldier_legs):
+def lose(position):
+    legs = soldier.soldier_legs(position[0],position[1])
+    if game_field.check_mines(legs):
         return True
     return False
 

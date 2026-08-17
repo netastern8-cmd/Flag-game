@@ -19,7 +19,7 @@ MINE=pygame.image.load("mine.png")
 FLAG_HEIGHT=FLAG.get_rect().height
 FLAG_WIDTH=FLAG.get_rect().width
 
-FONT_NAME="trajanproregular"
+FONT_NAME="ariel"
 FONT_SIZE = int(0.1*WIDTH)
 FONT=pygame.font.SysFont(FONT_NAME, FONT_SIZE)
 FONT_COLOR = BLACK

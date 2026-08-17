@@ -5,10 +5,10 @@ import game_field
 
 WINDOW = pygame.display.set_mode((consts.WIDTH,consts.HEIGHT))
 pygame.display.set_caption("FLAG GAME!")
-#e
+
 
 grass_lst=[]
-mine_lst=[]
+
 
 def matrix_to_pixels(row,col):
     y_pixels=row*20
@@ -35,7 +35,7 @@ def moving_screen():
 def frozen_screen():
     WINDOW.fill(consts.BACKGROUND_FROZEN)
     frozen_grid()
-    for block in mine_lst:
+    for block in game_field.mine_lst:
         drew_mine(block[0],block[1])
     pygame.display.update()
 
